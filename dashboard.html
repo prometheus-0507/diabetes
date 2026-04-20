@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Portal DMG</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+
+<body class="bg-light">
+
+    <!-- ================= HEADER ================= -->
+    <nav class="navbar navbar-light bg-white shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <h6 class="mb-0 text-muted">BEM-VINDA</h6>
+                <strong id="userName">USUÁRIA</strong>
+            </div>
+            <button class="btn btn-outline-danger btn-sm" id="logoutBtn">
+                SAIR
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================= CONTEÚDO ================= -->
+    <div class="container my-4">
+
+        <!-- ALERTAS -->
+        <div id="alertas" class="mb-4"></div>
+
+
+        <!-- ================= REGISTRO DIÁRIO ================= -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="fw-bold mb-3">REGISTRO DIÁRIO</h5>
+
+                <form id="registroDiarioForm">
+
+                    <!-- PESO / GLICEMIA -->
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">PESO ATUAL (KG)</label>
+                            <input type="number" step="0.1" class="form-control" id="pesoAtual">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">GLICEMIA (MG/DL)</label>
+                            <input type="number" class="form-control" id="glicemia">
+                        </div>
+                    </div>
+
+                    <!-- PRESSÃO -->
+                    <div class="row g-3 mt-1">
+                        <div class="col-md-6">
+                            <label class="form-label">PRESSÃO SISTÓLICA</label>
+                            <input type="number" class="form-control" id="pressaoSis">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">PRESSÃO DIASTÓLICA</label>
+                            <input type="number" class="form-control" id="pressaoDia">
+                        </div>
+                    </div>
+
+                    <!-- ÁGUA / SONO -->
+                    <div class="row g-3 mt-1">
+                        <div class="col-md-6">
+                            <label class="form-label">ÁGUA INGERIDA (L)</label>
+                            <input type="number" step="0.1" class="form-control" id="agua">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">HORAS DE SONO</label>
+                            <input type="number" step="0.5" class="form-control" id="sono">
+                        </div>
+                    </div>
+
+                    <!-- ATIVIDADE FÍSICA -->
+                    <hr class="my-4">
+
+                    <h6 class="fw-bold">ATIVIDADE FÍSICA</h6>
+
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">TIPO</label>
+                            <select class="form-select" id="atividadeTipo">
+                                <option value="">NENHUMA</option>
+                                <option>CAMINHADA</option>
+                                <option>NATAÇÃO</option>
+                                <option>ALONGAMENTO</option>
+                                <option>OUTRA</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">TEMPO (MIN)</label>
+                            <input type="number" class="form-control" id="atividadeTempo">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">INTENSIDADE</label>
+                            <select class="form-select" id="atividadeIntensidade">
+                                <option>LEVE</option>
+                                <option>MODERADA</option>
+                                <option>INTENSA</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- MEDICAÇÃO -->
+                    <hr class="my-4">
+
+                    <h6 class="fw-bold">MEDICAÇÃO / SUPLEMENTOS</h6>
+
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-8">
+                            <label class="form-label">NOME</label>
+                            <input type="text" class="form-control" id="medicacaoNome">
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" type="checkbox" id="medicacaoTomada">
+                                <label class="form-check-label">
+                                    TOMOU HOJE
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary w-100 mt-4" type="submit">
+                        SALVAR REGISTRO DO DIA
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- ================= GRÁFICOS ================= -->
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold mb-3">ACOMPANHAMENTO</h5>
+
+                <div class="mb-4">
+                    <canvas id="graficoPeso"></canvas>
+                </div>
+
+                <div class="mb-4">
+                    <canvas id="graficoGlicemia"></canvas>
+                </div>
+
+                <div class="mb-4">
+                    <canvas id="graficoAgua"></canvas>
+                </div>
+
+                <div class="mb-4">
+                    <canvas id="graficoSono"></canvas>
+                </div>
+
+                <div class="d-grid gap-2 mt-3">
+                    <button class="btn btn-outline-primary" id="btnPdfResumo">
+                        GERAR RELATÓRIO RESUMIDO (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- Configuração -->
+    <script src="js/auth.js"></script>
+
+    <!-- Biblioteca dos gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Biblioteca do PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Seu dashboard -->
+    <script src="js/dashboard.js"></script>
+
+
+
+
+
+
+</body>
+
+</html>

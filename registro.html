@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Inicial | Portal DMG</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      text-transform: uppercase;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-light bg-white shadow-sm">
+    <div class="container">
+      <span class="navbar-brand fw-bold">Portal DMG</span>
+    </div>
+  </nav>
+
+  <!-- CONTEÚDO -->
+  <section class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+
+        <div class="card shadow-sm border-0 rounded-4">
+          <div class="card-body p-4">
+
+            <h4 class="fw-bold text-center mb-2">
+              Cadastro Inicial
+            </h4>
+
+            <p class="text-muted text-center mb-4">
+              Preencha os dados abaixo para iniciar seu acompanhamento.
+            </p>
+
+            <form id="registroForm">
+
+              <!-- DADOS PESSOAIS -->
+              <h6 class="fw-semibold mb-3">Dados pessoais</h6>
+
+              <div class="mb-3">
+                <label class="form-label">Data de nascimento</label>
+                <input type="date" class="form-control" id="nascimento" required>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Celular</label>
+                <input type="tel" class="form-control" id="celular" placeholder="(00) 00000-0000" maxlength="15">
+
+              </div>
+
+              <hr>
+
+              <!-- DADOS CORPORAIS -->
+              <h6 class="fw-semibold mb-3">Dados corporais iniciais</h6>
+
+              <div class="mb-3">
+                <label class="form-label">Altura (cm)</label>
+                <input type="number" class="form-control" id="altura" required>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Peso pré-gestacional (kg)</label>
+                <input type="number" step="0.1" class="form-control" id="pesoPre" required>
+              </div>
+
+              <hr>
+
+              <!-- GESTAÇÃO -->
+              <h6 class="fw-semibold mb-3">Gestação</h6>
+
+              <div class="mb-3">
+                <label class="form-label">Semana gestacional atual</label>
+                <input type="number" class="form-control" id="semanaGestacional">
+              </div>
+
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="primeiraGestacao">
+                <label class="form-check-label">
+                  Primeira gestação
+                </label>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="diabetesAnterior">
+                <label class="form-check-label">
+                  Já teve diabetes gestacional
+                </label>
+              </div>
+
+              <hr>
+
+              <!-- CONDIÇÕES -->
+              <h6 class="fw-semibold mb-3">Condições de saúde</h6>
+
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="hipertensao">
+                <label class="form-check-label">
+                  Hipertensão arterial
+                </label>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="medicacao">
+                <label class="form-check-label">
+                  Uso contínuo de medicação
+                </label>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">OUTRAS CONDIÇÕES OU OBSERVAÇÕES</label>
+                <textarea class="form-control" id="observacoesSaude" rows="3"
+                  placeholder="DESCREVA AQUI QUALQUER OUTRA CONDIÇÃO RELEVANTE">
+                </textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100 mt-3">
+                Salvar e continuar
+              </button>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const celularInput = document.getElementById("celular");
+
+    celularInput.addEventListener("input", function () {
+      let valor = celularInput.value.replace(/\D/g, "");
+
+      if (valor.length > 11) valor = valor.slice(0, 11);
+
+      if (valor.length > 6) {
+        celularInput.value = `(${valor.slice(0, 2)}) ${valor.slice(2, 7)}-${valor.slice(7)}`;
+      } else if (valor.length > 2) {
+        celularInput.value = `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
+      } else {
+        celularInput.value = valor;
+      }
+    });
+  </script>
+
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <!-- JS central -->
+  <script src="js/auth.js"></script>
+
+
+</body>
+
+</html>
