@@ -1,0 +1,195 @@
+/* RESET BÁSICO */
+body {
+    background: #f4f6f8;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* =======================
+   MENU
+======================= */
+.menu-clean {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 14px 0;
+}
+
+.menu-item {
+    margin-left: 24px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.menu-item::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #0d6efd;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.3s;
+}
+
+.menu-item:hover::after,
+.menu-item.active::after {
+    width: 100%;
+}
+
+/* =======================
+   NOTÍCIA PRINCIPAL
+======================= */
+.destaque-clean {
+    margin-top: 90px;
+    padding: 40px 0;
+}
+
+.noticia-destaque {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.noticia-destaque img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+
+.texto-destaque {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: rgba(252, 251, 251, 0.5);
+    padding: 28px;
+    border-radius: 12px;
+    max-width: 520px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    
+
+}
+
+
+.texto-destaque h1 {
+    color: #111;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+
+
+.btn-destaque {
+    display: inline-block;
+    background: #0d6efd;
+    color: #fcfbfb;
+    padding: 12px 26px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-destaque:hover {
+    background: #1f94f5;
+    transform: translateY(-1px);
+}
+
+
+
+/* =======================
+   TAG
+======================= */
+.tag {
+    display: inline-block;
+    font-size: 12px;
+    color: #1f94f5;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+/* =======================
+   CARDS DE NOTÍCIAS
+======================= */
+.noticia-card-click {
+    display: block; /* garante card inteiro clicável */
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    background: #fff;
+}
+
+.noticia-card-click img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.noticia-card-click:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+}
+
+.ler-mais {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+/* =======================
+   CATEGORIAS
+======================= */
+.categorias {
+    background: #ffffff;
+    padding: 60px 0;
+}
+
+.categoria-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.categoria-box {
+    background: #ffffff;
+    border-left: 5px solid #0d6efd;
+    padding: 25px;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.categoria-box:hover {
+    background: #f0f6ff;
+    transform: translateX(6px);
+}
+
+/* =======================
+   TÍTULOS
+======================= */
+.titulo-secao {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* =======================
+   FOOTER
+======================= */
+.footer {
+    background: #0d6efd;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+
